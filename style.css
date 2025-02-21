@@ -1,0 +1,26 @@
+.header {
+    color: white;
+}
+
+.line1 {
+    display: flex;
+}
+
+.line2 {
+    display: flex;
+}
+
+.section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    border: solid;
+    border-radius: 10px;
+    border-color: black;
+    border-width: 5px;
+    background-color: purple;
+    color: white;
+    padding: 5px;
+    margin: 5px;
+}

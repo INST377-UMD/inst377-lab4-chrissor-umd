@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lab 4 Assignment</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body id="body">
+        <script>
+            window.onload = function onLoad() {
+                var savedColor = localStorage.getItem('backgroundColor') || "rgb(100, 100, 255)";
+                document.getElementById("body").style.backgroundColor = savedColor;
+                var colorToSave = window.getComputedStyle(document.getElementById("body")).backgroundColor;
+                localStorage.setItem('backgroundColor', `${colorToSave}`);
+            }
+
+            function clickButton() {
+                var name = document.getElementById("Name").value;
+                alert(`Hi ${name}!`);
+            }
+
+            function changeColor() {
+                var bodyColor = window.getComputedStyle(document.getElementById("body")).backgroundColor;
+                if (bodyColor == "rgb(255, 100, 100)") {
+                    document.getElementById("body").style.backgroundColor = "rgb(100, 100, 255)";
+                }
+                else {
+                    document.getElementById("body").style.backgroundColor = "rgb(255, 100, 100)";
+                }
+                localStorage.setItem('backgroundColor', `${window.getComputedStyle(document.getElementById("body")).backgroundColor}`);
+            }
+
+            function validateText() {
+                var validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+                var text = document.getElementById("test-text").value
+                if (validation.test(text)) {
+                    alert("Special Character Detected!")
+                }
+                else {
+                    alert("No Special Characters Detected :)");
+                }
+            }
+
+            function addText() {
+                var header = document.getElementById("header").innerHTML;
+                header = `${header} Add Text`;
+                document.getElementById("header").innerHTML = header;
+            }
+
+        </script>
+        <h1 id="header" class="header">INST 377 - LAB 4</h1>
+        <div class="line1">
+            <div id="alertme" class="section">
+                <form onsubmit="clickButton()">
+                    <label for="Name">Name:</label>
+                    <input type="text" id="Name" name="Name" required>
+                    <button type="submit">Alert Me!</button>
+                </form>
+            </div>
+            <div id="change-color" class="section">
+                <button type="button" onclick="changeColor()">Change Color</button>
+            </div>
+        </div>
+        <div class="line2">
+            <div id="text-tester" class="section">
+                <form>
+                    <label for="test-text">Text Tester:</label>
+                    <input type="text" id="test-text" name="test-text">
+                    <button type="button" onclick="validateText()">Validate Text</button>
+                </form>
+            </div>
+            <div id="add-text" class="section">
+                <button type="button" onclick="addText()">Add Text</button>
+            </div>
+        </div>
+    </body>
+
+</html>
